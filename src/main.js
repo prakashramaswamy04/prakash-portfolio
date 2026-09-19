@@ -14,7 +14,13 @@ const projects = [
   {title:'Automation Framework Development', status:'Professional', type:'professional', desc:'Reusable utilities, common keywords, logging, error handling and data/browser automation components.', tags:['Python','Robot Framework','Selenium','MySQL','AWS'], details:'A core professional engineering focus.'},
   {title:'Python + Playwright Automation Framework', status:'In Development', type:'development', desc:'A reusable layered framework separating automation actions, business flows, locators and test orchestration.', tags:['Python','Playwright','Pytest','Git','GitHub'], details:'Tests → Feature / Business Flow Layer → Page Locator Layer → Common Automation Layer → Playwright → Browser. [GitHub Repository] · [Screenshots] · [Demo]'}
 ];
-const notes = ['Playwright Automation Framework','API Automation with Python'];
+const notes = [
+  {
+    title: 'Playwright Automation Framework',
+    href: '/Playwright_Python_Test_Automation_Framework_Expanded_Guide.docx'
+  },
+  { title: 'API Automation with Python' }
+];
 const journey = [
   ['Robot Framework / RPA','professional'],['Python','professional'],['Playwright','current'],['Pytest','current'],['API Automation','current'],['Generative AI','current'],['RAG','current'],['Vector Databases','current'],['LangChain / LangGraph','current'],['AI Agents','future'],['Agentic Automation','future'],['Docker / CI/CD','future'],['AWS','professional']
 ];
@@ -22,7 +28,7 @@ document.querySelector('#skills-grid').innerHTML = Object.entries(skills).map(([
 function renderProjects(filter='all') { document.querySelector('#project-grid').innerHTML = projects.filter(p => filter === 'all' || p.type === filter).map((p,i) => `<article class="project-card ${p.type}"><div class="card-top"><span class="status ${p.type}"><i></i>${p.status}</span><span class="project-num">${String(i+1).padStart(2,'0')}</span></div><h3>${p.title}</h3><p>${p.desc}</p>${p.type === 'professional' ? '<p class="confidential-note">Confidential healthcare work — details generalized to protect patient, client, and employer information.</p>' : ''}<div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div>${p.type === 'development' ? `<button class="text-link project-open" data-title="${p.title}">View project <span>→</span></button>` : ''}</article>`).join(''); }
 renderProjects();
 document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => { document.querySelector('.filter.active').classList.remove('active'); btn.classList.add('active'); renderProjects(btn.dataset.filter); }));
-document.querySelector('#notes').innerHTML = notes.map((n,i) => `<article class="note"><span>0${i+1} / Drafting</span><h3>${n}</h3><p>Technical note coming soon.</p><a href="#contact" aria-label="${n} coming soon">Read when published <b>→</b></a></article>`).join('');
+document.querySelector('#notes').innerHTML = notes.map((note, i) => `<article class="note"><span>0${i+1} / ${note.href ? 'Published' : 'Drafting'}</span><h3>${note.title}</h3><p>${note.href ? 'Expanded guide available.' : 'Technical note coming soon.'}</p><a href="${note.href || '#contact'}"${note.href ? ' target="_blank" rel="noreferrer"' : ''} aria-label="${note.href ? `View ${note.title}` : `${note.title} coming soon`}">${note.href ? 'View guide' : 'Read when published'} <b>→</b></a></article>`).join('');
 document.querySelector('#professional-highlights').innerHTML = professionalHighlights.map((item, i) => `<article class="highlight-card"><span>0${i + 1} / ${item.category}</span><h3>${item.title}</h3><p>${item.description}</p></article>`).join('');
 document.querySelector('#learning-certificates').innerHTML = learningCertificates.map(item => `<article class="certificate-card"><div><span class="cert-status">${item.status}</span><h3>${item.title}</h3></div><dl><div><dt>Provider</dt><dd>${item.provider}</dd></div><div><dt>Instructor / platform</dt><dd>${item.instructor}</dd></div><div><dt>Type</dt><dd>${item.type}</dd></div></dl>${item.credentialUrl ? `<a class="credential-link" href="${item.credentialUrl}" target="_blank" rel="noreferrer">View Certificate <span>↗</span></a>` : `<span class="credential-pending">Credential link pending</span>`}</article>`).join('');
 document.querySelector('#journey-track').innerHTML = journey.map(([item,type],i)=>`<div class="journey-step ${type}"><span>${String(i+1).padStart(2,'0')}</span><i></i><strong>${item}</strong></div>`).join('');

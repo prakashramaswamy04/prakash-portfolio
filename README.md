@@ -60,6 +60,7 @@ npm run preview
 .
 ├── public/
 │   ├── certificates/
+│   ├── Playwright_Python_Test_Automation_Framework_Expanded_Guide.docx
 │   ├── favicon.png
 │   ├── favicon.svg
 │   ├── resume.pdf
@@ -79,6 +80,7 @@ npm run preview
 - Update projects, skills, and page interactions in `src/main.js`.
 - Update professional highlights and learning certificates in `src/data/achievements.js`.
 - Replace `public/resume.pdf` when publishing a new resume.
+- Replace `public/Playwright_Python_Test_Automation_Framework_Expanded_Guide.docx` when publishing an updated Playwright guide.
 - Update `public/sitemap.xml` if the public site URL or page structure changes.
 
 Professional healthcare work is intentionally generalized to protect patient, client, and employer confidentiality. Sensitive or proprietary information should not be added to this repository.
